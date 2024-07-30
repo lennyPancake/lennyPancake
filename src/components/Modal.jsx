@@ -9,20 +9,32 @@ const Modal = ({ user, onClose }) => {
         <button onClick={onClose} className="close-button">
           X
         </button>
-        <h2>Детали пользователя</h2>
-        <p>ФИО: {`${user.firstName} ${user.lastName}`}</p>
-        <p>Возраст: {user.age}</p>
+        <h2>Информация о пользователе</h2>
         <p>
-          Адрес:{" "}
+          <b>Возраст</b>: {user.age}
+        </p>
+        <p>
+          <b>ФИО:</b> {`${user.firstName} ${user.lastName}`}
+        </p>
+        <p>
+          <b>Адрес:</b>{" "}
           {`${user.address.city}, ${user.address.address
             .split(" ")
             .splice(1)
             .join(" ")}`}
         </p>
-        <p>Рост: {user.height} см</p>
-        <p>Вес: {user.weight} кг</p>
-        <p>Номер телефона: {user.phone}</p>
-        <p>Email: {user.email}</p>
+        <p>
+          <b>Рост:</b> {user.height} см
+        </p>
+        <p>
+          <b>Вес:</b> {user.weight} кг
+        </p>
+        <p>
+          <b>Номер телефона:</b> {user.phone}
+        </p>
+        <p>
+          <b>Email:</b> {user.email}
+        </p>
       </div>
     </div>
   );

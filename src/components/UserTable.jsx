@@ -1,7 +1,7 @@
 import React from "react";
 import UserTableRow from "./UserTableRow";
 
-const UserTable = ({ users, onSort, sortConfig, onRowClick }) => {
+const UserTable = ({ loading, users, onSort, sortConfig, onRowClick }) => {
   const getSortDirection = (column) => {
     if (sortConfig.key === column) {
       if (sortConfig.direction === "asc") return "↑";
@@ -9,6 +9,14 @@ const UserTable = ({ users, onSort, sortConfig, onRowClick }) => {
     }
     return "";
   };
+
+  if (loading) {
+    return <h3>Пожалуйста, подождите, идет загрузка...</h3>;
+  }
+
+  if (users.length === 0) {
+    return <h2>Совпадений не найдено</h2>;
+  }
 
   return (
     <table>
@@ -23,7 +31,9 @@ const UserTable = ({ users, onSort, sortConfig, onRowClick }) => {
           <th onClick={() => onSort("gender")}>
             Пол {getSortDirection("gender")}
           </th>
-          <th>Номер телефона</th>
+          <th onClick={() => onSort("phone")}>
+            Номер телефона {getSortDirection("phone")}
+          </th>
           <th onClick={() => onSort("address")}>
             Адрес {getSortDirection("address")}
           </th>
